@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Login Page";
+}
+@model LoginUser
+<h1>We've Met Before</h1>
+<form asp-action="DoesLogin" asp-controller="LogReg" method="POST">
+<span asp-validation-for="LogEmail"></span>
+    <div></div>
+    <label asp-for="LogEmail"></label>
+    <input asp-for="LogEmail">
+    <div></div>
+    <span asp-validation-for="LogPassword"></span>
+    <div></div>
+    <label asp-for="LogPassword"></label>
+    <input asp-for="LogPassword" type="password">
+    <div></div>
+    <input type="Submit" value="Welcome Back">
+</form>
