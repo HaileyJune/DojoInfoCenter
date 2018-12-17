@@ -4,10 +4,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
-using UpdatedLogReg.Models;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using DojoInfoCenter.Models;
 
-namespace UpdatedLogReg
+namespace DojoInfoCenter
 {
     public class Startup
     {
@@ -22,8 +24,7 @@ namespace UpdatedLogReg
             // Add framework services.
             services.AddMvc();
             services.AddSession();
-            services.AddDbContext<LogRegContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
-
+            services.AddDbContext<DojoInfoCenterContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

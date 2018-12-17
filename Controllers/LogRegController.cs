@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using UpdatedLogReg.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
+using DojoInfoCenter.Models;
 
-namespace UpdatedLogReg.Controllers
+namespace DojoInfoCenter.Controllers
 {
     public class LogRegController : Controller
 {
-    private LogRegContext dbContext;
+    private DojoInfoCenterContext dbContext;
 
     // here we can "inject" our context service into the constructor
-    public LogRegController(LogRegContext context)
+    public LogRegController(DojoInfoCenterContext context)
     {
         dbContext = context;
     }

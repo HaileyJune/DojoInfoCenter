@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace UpdatedLogReg.Models
+namespace DojoInfoCenter.Models
 {
 public class LoginUser
 {

@@ -1,22 +1,17 @@
 @{
     ViewData["Title"] = "Registration Page";
 }
+@using DojoInfoCenter.Models
 @model UserObject
 <h1>Introduce Yourself</h1>
 <form asp-action="DoesRegister" asp-controller="LogReg" method="POST">
     
-    <span asp-validation-for="FirstName"></span>
+    <span asp-validation-for="UserName"></span>
     <div></div>
-    <label asp-for="FirstName"></label>
-    <input asp-for="FirstName">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName">
     <div></div>
 
-    <span asp-validation-for="LastName"></span>
-    <div></div>
-    <label asp-for="LastName"></label>
-    <input asp-for="LastName">
-    <div></div>
-    
     <span asp-validation-for="Email"></span>
     <div></div>
     <label asp-for="Email"></label>

@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace UpdatedLogReg
+namespace DojoInfoCenter
 {
-   public class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
