@@ -1,1 +1,115 @@
 /*Write all of your CSS here*/
+*
+{
+    text-align: center;
+    color: white;
+}
+
+a
+{
+    text-decoration: none;
+}
+.container
+{
+    background-color: gray;
+}
+
+.troom
+{
+    display: block;
+    width: 100%;
+    height: 400px;
+    line-height: 400px;
+}
+.sroom
+{
+    display: block;
+    width: 100%;
+    height: 200px;
+    line-height: 200px;
+}
+
+#mean
+{
+    background-color: red;
+}
+
+#BR
+{
+    background-color: black;
+}
+
+#alumni
+{
+    background-color: blue;
+}
+
+#python
+{
+    background-color: orange;
+}
+
+#dnwb
+{
+    background-color: hotpink;
+}
+
+#dnmb
+{
+    background-color: aqua;
+}
+
+#info
+{
+    background-color: green;
+}
+
+#pp
+{
+    background-color: blueviolet;
+}
+
+#kitchen
+{
+    background-color: darkblue;
+}
+
+#pres
+{
+    background-color: yellow;
+}
+
+#couch
+{
+    background-color: darkgray;
+}
+
+#tl
+{
+    background-color: black;
+}
+
+#dswb
+{
+    background-color: hotpink;    
+}
+
+#dsmb
+{
+    background-color: aqua;    
+}
+
+#wf
+{
+    background-color: yellow;    
+}
+
+#c
+{
+    background-color: purple;    
+}
+
+#flex
+{
+    background-color: green;    
+}
