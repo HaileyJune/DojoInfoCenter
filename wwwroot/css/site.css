@@ -5,6 +5,10 @@
     color: white;
 }
 
+a
+{
+    text-decoration: none;
+}
 .container
 {
     background-color: gray;
