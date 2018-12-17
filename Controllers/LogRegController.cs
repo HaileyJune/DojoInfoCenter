@@ -70,7 +70,7 @@ namespace DojoInfoCenter.Controllers
                 dbContext.Add(user);
                 dbContext.SaveChanges();
                 HttpContext.Session.SetInt32("userid", user.UserId);
-                return Redirect("/success"); //This doesn't exist yet
+                return RedirectToAction("Main", "Main");
             }
         }
         // other code
@@ -116,7 +116,7 @@ namespace DojoInfoCenter.Controllers
             System.Console.WriteLine("****************Successfully logged in");
             var user = dbContext.Users.SingleOrDefault(u => u.Email == userSubmission.LogEmail);
             HttpContext.Session.SetInt32("userid", user.UserId);
-            return Redirect("/success"); //This doesn't exist yet
+            return RedirectToAction("Main", "Main");
         }
         else
         {
@@ -125,22 +125,6 @@ namespace DojoInfoCenter.Controllers
         }
     }
 
-    [HttpGet]
-    [Route("success")]
-    public IActionResult Success()
-    {
-        System.Console.WriteLine("****************Success!");
-        if (HttpContext.Session.GetInt32("userid") != null)
-        {
-            System.Console.WriteLine("****************Actual success!");
-            return View();
-        }
-        else
-        {
-            System.Console.WriteLine("****************Secret failure");
-            return Redirect("/");
-        }
-    }
 
     [HttpGet]
     [Route("logout")]
