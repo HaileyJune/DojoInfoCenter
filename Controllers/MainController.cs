@@ -19,21 +19,116 @@ namespace DojoInfoCenter.Controllers
         dbContext = context;
     }
 
-//this is the login register page
+//Main page 
     [HttpGet]
     [Route("Main")]
     public IActionResult Main()
     {
+        if(HttpContext.Session.GetInt32("userid") == null) 
+        {
+            return RedirectToAction("Index", "LogReg");
+        }
+
+        List<LocationObject> AllLocations = dbContext.Locations
+        .ToList();
+        ViewBag.AllLocations = AllLocations;
+        
+        List<MessageObject> LatestMessages = dbContext.Messages
+        .Include(m => m.Creator)
+        .Include(m => m.Location)
+        .OrderBy(m => m.CreatedAt)
+        .Take(3)
+        .ToList();
+        ViewBag.LatestMessages = LatestMessages;
 
         return View();
     }
 
+//to get messages for specific location Id.
     [HttpGet]
-    [Route("Latest")]
-    public IActionResult Latest()
+    [Route("/{id}")]
+    public IActionResult PerLocation(int id)
     {
+        if(HttpContext.Session.GetInt32("userid") == null) 
+        {
+            return RedirectToAction("Index", "LogReg");
+        }
+
+        LocationObject ThisLocation = dbContext.Locations
+            .Where(l => l.LocationId == id)
+            .FirstOrDefault();
+        ViewBag.ThisLocation = ThisLocation;
+        
+        List<MessageObject> MsgsPerLocation = dbContext.Messages
+        .Where(m => m.LocationId == id)
+        .Include(m => m.Creator)
+        .OrderBy(m => m.CreatedAt)
+        .ToList();  
+        ViewBag.MsgsPerLocation = MsgsPerLocation;
+
+        ViewBag.LoggedInUserId = HttpContext.Session.GetInt32("userid");
         
         return View();
+    }
+
+
+// ------------add a new message------------
+
+    [HttpPost("/newMessage")]
+    public IActionResult newMessage(MessageObject newMessage)
+    {
+        if(ModelState.IsValid)
+        {
+            {
+                dbContext.Add(newMessage);
+                dbContext.SaveChanges();
+            
+                return RedirectToAction("Main");
+            }
+        }
+        System.Console.WriteLine("*************************");
+        System.Console.WriteLine("New Message failed");
+        System.Console.WriteLine($"Message: {newMessage.MessageTxt}");
+        System.Console.WriteLine($"IS Archived: {newMessage.IsArchived}");
+        System.Console.WriteLine($"UserID: {newMessage.UserId}");
+        System.Console.WriteLine($"Location ID: {newMessage.LocationId}");
+        System.Console.WriteLine("*************************");
+        return RedirectToAction("Main");
+    }
+
+// ----------form to add new location----------
+    [HttpGet]
+    [Route("addLocation")]
+    public IActionResult addLocation()
+    {
+        if(HttpContext.Session.GetInt32("userid") == null) 
+        {
+            return RedirectToAction("Index", "LogReg");
+        }
+                
+        ViewBag.LoggedInUserId =  HttpContext.Session.GetInt32("userid");
+        return View();
+    }
+
+// ------------add a new location------------
+
+    [HttpPost("/newLocation")]
+    public IActionResult newLocation(LocationObject newLocation)
+    {
+        if(ModelState.IsValid)
+        {
+            {
+                dbContext.Add(newLocation);
+                dbContext.SaveChanges();
+            
+                return RedirectToAction("Main");
+            }
+        }
+        System.Console.WriteLine("*************************");
+        System.Console.WriteLine("New location failed");
+        System.Console.WriteLine("*************************");
+
+        return RedirectToAction("Main");
     }
 }
 }

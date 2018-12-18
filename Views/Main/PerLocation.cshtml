@@ -1,0 +1,25 @@
+<div>
+    @using DojoInfoCenter.Models
+    <h5>Activity Log for @ViewBag.ThisLocation.LocationName</h5>
+    <ul>
+    @{
+        if (@ViewBag.MsgsPerLocation.Count != 0)
+        {
+            foreach(var m in @ViewBag.MsgsPerLocation)
+            {
+                <li>@m.Creator.UserName : @m.MessageTxt @m.CreatedAt.ToString("MM/dd h:mm tt")</li>
+            }
+        }
+    }
+    </ul>
+    @model MessageObject
+    <span>Post a Message!</span>
+    <form asp-action="newMessage" asp-controller="Main" method="post">
+        <textarea asp-for="MessageTxt"></textarea>
+        <input type="hidden" asp-for="IsArchived" value="False">
+        <input type="hidden" asp-for="UserId" value="@ViewBag.LoggedInUserId">
+        <input type="hidden" asp-for="LocationId" value="@ViewBag.ThisLocation.LocationId">
+        <button type="submit">Post a message</button>
+    </form>
+</div>
+</div>
