@@ -12,7 +12,7 @@ $(".close").on("click", function(){
 });
 
 
-$(".roomName").on("click", function(){
+$(".Room").on("click", function(){
     var roomName = $(this).attr("data-room")
     // console.log(roomName);
     // return false

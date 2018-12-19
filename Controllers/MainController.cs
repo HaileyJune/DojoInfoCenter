@@ -46,21 +46,23 @@ namespace DojoInfoCenter.Controllers
 
 //to get messages for specific location Id.
     [HttpGet]
-    [Route("/{id}")]
-    public IActionResult PerLocation(int id)
+    [Route("/{name}")]
+    public IActionResult PerLocation(string name)
     {
-        if(HttpContext.Session.GetInt32("userid") == null) 
-        {
-            return RedirectToAction("Index", "LogReg");
-        }
 
         LocationObject ThisLocation = dbContext.Locations
-            .Where(l => l.LocationId == id)
+            .Where(l => l.LocationName == name)
             .FirstOrDefault();
         ViewBag.ThisLocation = ThisLocation;
         
+        if(ThisLocation == null)
+        {
+            System.Console.WriteLine("**location not found**");
+            return RedirectToAction("Main");
+        }
+        
         List<MessageObject> MsgsPerLocation = dbContext.Messages
-        .Where(m => m.LocationId == id)
+        .Where(m => m.LocationId == ThisLocation.LocationId)
         .Include(m => m.Creator)
         .OrderBy(m => m.CreatedAt)
         .ToList();  
