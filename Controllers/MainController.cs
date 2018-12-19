@@ -68,7 +68,7 @@ namespace DojoInfoCenter.Controllers
 
         ViewBag.LoggedInUserId = HttpContext.Session.GetInt32("userid");
         
-        return View();
+        return PartialView("PerLocation");
     }
 
 
