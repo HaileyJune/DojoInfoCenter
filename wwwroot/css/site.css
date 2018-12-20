@@ -24,8 +24,7 @@ a
 
 .hover
 {
-    outline: 2px solid black;
-    background-color: hotpink;
+    outline: 2px dotted black;
 }
 /* .container */
 /* { */
@@ -78,21 +77,20 @@ a
     overflow: auto;
     padding: 1%;
 }
-.popup-overlay.active{
-  /*displays pop-up when "active" class is present*/
-    visibility:visible;
-}
 
 .popup-content {
-  /*Hides pop-up content when there is no "active" class */
+    /*Hides pop-up content when there is no "active" class */
     visibility:hidden;
 }
 
-.popup-content.active {
-  /*Shows pop-up content when "active" class is present */
-    visibility:visible;
+.text {
+    visibility: hidden;
 }
 
+.active{
+  /*displays pop-up when "active" class is present*/
+    visibility:visible;
+}
 
 #mean
 {
@@ -179,3 +177,4 @@ a
 {
     background-color: #86bb4b;    
 }
+

@@ -27,8 +27,8 @@ $(".Room").on("click", function(){
 
 $( ".Room" ).hover(
     function() {
-    $( this ).addClass("hover");
+    $(".text").addClass("active");
     }, function() {
-    $( this ).removeClass("hover");
+    $(".text").removeClass("active");
     }
 );
