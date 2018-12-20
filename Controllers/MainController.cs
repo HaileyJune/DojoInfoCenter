@@ -90,7 +90,10 @@ namespace DojoInfoCenter.Controllers
                 .Include(m => m.Location)
                 .FirstOrDefault();
 
-                return RedirectToAction("PerLocation", new { name = msgWlocation.Location.LocationName });
+                string locationName = msgWlocation.Location.LocationName;
+
+                return Json(locationName);
+                // return RedirectToAction("PerLocation", new { name = msgWlocation.Location.LocationName });
             }
         }
         return RedirectToAction("Main");
