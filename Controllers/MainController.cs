@@ -44,7 +44,7 @@ namespace DojoInfoCenter.Controllers
         return View();
     }
 
-//to get messages for specific location Id.
+//----get messages for specific location and render PerLocation partial-----
     [HttpGet]
     [Route("/{name}")]
     public IActionResult PerLocation(string name)
@@ -96,39 +96,39 @@ namespace DojoInfoCenter.Controllers
         return RedirectToAction("Main");
     }
 
-// ----------form to add new location----------
-    [HttpGet]
-    [Route("addLocation")]
-    public IActionResult addLocation()
-    {
-        if(HttpContext.Session.GetInt32("userid") == null) 
-        {
-            return RedirectToAction("Index", "LogReg");
-        }
+// // ----------form to add new location----------
+//     [HttpGet]
+//     [Route("addLocation")]
+//     public IActionResult addLocation()
+//     {
+//         if(HttpContext.Session.GetInt32("userid") == null) 
+//         {
+//             return RedirectToAction("Index", "LogReg");
+//         }
                 
-        ViewBag.LoggedInUserId =  HttpContext.Session.GetInt32("userid");
-        return View();
-    }
+//         ViewBag.LoggedInUserId =  HttpContext.Session.GetInt32("userid");
+//         return View();
+//     }
 
-// ------------add a new location------------
+// // ------------add a new location------------
 
-    [HttpPost("/newLocation")]
-    public IActionResult newLocation(LocationObject newLocation)
-    {
-        if(ModelState.IsValid)
-        {
-            {
-                dbContext.Add(newLocation);
-                dbContext.SaveChanges();
+//     [HttpPost("/newLocation")]
+//     public IActionResult newLocation(LocationObject newLocation)
+//     {
+//         if(ModelState.IsValid)
+//         {
+//             {
+//                 dbContext.Add(newLocation);
+//                 dbContext.SaveChanges();
             
-                return RedirectToAction("Main");
-            }
-        }
-        System.Console.WriteLine("*************************");
-        System.Console.WriteLine("New location failed");
-        System.Console.WriteLine("*************************");
+//                 return RedirectToAction("Main");
+//             }
+//         }
+//         System.Console.WriteLine("*************************");
+//         System.Console.WriteLine("New location failed");
+//         System.Console.WriteLine("*************************");
 
-        return RedirectToAction("Main");
-    }
+//         return RedirectToAction("Main");
+//     }
 }
 }

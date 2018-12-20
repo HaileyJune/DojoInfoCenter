@@ -19,11 +19,15 @@ namespace DojoInfoCenter.Controllers
         dbContext = context;
     }
 
-//this is the login register page
+//this is the main login register page
     [HttpGet]
     [Route("")]
     public IActionResult Index()
     {
+        if(HttpContext.Session.GetInt32("userid") != null) 
+            {
+                return RedirectToAction("Main", "Main");
+            }
         System.Console.WriteLine("****************Main Page");
         return View();
     }
@@ -132,7 +136,7 @@ namespace DojoInfoCenter.Controllers
     {
         System.Console.WriteLine("****************Logged out");
         HttpContext.Session.Clear();
-        return Redirect("/");
+        return RedirectToAction("Index");
     }
 }
 }

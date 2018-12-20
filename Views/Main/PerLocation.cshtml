@@ -22,7 +22,7 @@
         <input type="hidden" asp-for="IsArchived" value="False">
         <input type="hidden" asp-for="UserId" value="@ViewBag.LoggedInUserId">
         <input type="hidden" asp-for="LocationId" value="@ViewBag.ThisLocation.LocationId">
-        <textarea asp-for="MessageTxt" rows="1" cols="30"></textarea>
+        <textarea asp-for="MessageTxt"></textarea>
         <br>
         <button type="submit">Post a message</button>
     </form>
