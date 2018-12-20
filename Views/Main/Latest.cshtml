@@ -1,23 +1,17 @@
-<div>
-    <h5>Latest Activity Log</h5>
+<div class="Latest_activity">
+    <b>Latest Activities:</b>
     <ul>
     @{
         if (@ViewBag.LatestMessages.Count != 0)
         {
             foreach(var m in @ViewBag.LatestMessages)
             {
-                <li>@m.Creator.UserName : @m.MessageTxt @m.CreatedAt.ToString("MM/dd h:mm tt")</li>
+                <li>
+                    @m.Location.LocationName: @m.MessageTxt 
+                    by @m.Creator.UserName @m.CreatedAt.ToString("MM/dd h:mm tt")
+                </li>
             }
         }
     }
     </ul>
-
-<p>Temp List of Locations</p>
-<ul>
-    @foreach(var l in @ViewBag.AllLocations)
-    {
-        <li><a href="/@l.LocationId">@l.LocationName</a></li>
-    }
-</ul>
-
 </div>

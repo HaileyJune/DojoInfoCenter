@@ -5,6 +5,18 @@
     color: white;
 } */
 
+.Latest_activity {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.Latest_activity *{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
 a
 {
     text-decoration: none;
@@ -17,7 +29,8 @@ a
 }
 .container
 {
-    background-color: gray;
+    /* background-image: url(wwwroot\images\Background.PNG) */
+    /* background-color: gray; */
 }
 
 .troom
@@ -37,6 +50,19 @@ a
     line-height: 200px;
     color: white;
     text-align: center;
+}
+
+
+
+.troom img
+{
+    vertical-align: middle;
+    height: 50%;
+}
+.sroom img
+{
+    vertical-align: middle;
+    height: 75%;
 }
 
 .popup-overlay{
@@ -68,7 +94,8 @@ a
 
 #mean
 {
-    background-color: red;
+    /* background-image: url("~/images/MEAN.png"); */
+    background-color: #86bb4b;
 }
 
 #BR
@@ -83,7 +110,7 @@ a
 
 #python
 {
-    background-color: orange;
+    background-color: #3573a2;
 }
 
 #dnwb
@@ -138,12 +165,12 @@ a
 
 #wf
 {
-    background-color: yellow;    
+    background-color: #e44f26;    
 }
 
 #c
 {
-    background-color: purple;    
+    background-color: #692c66;    
 }
 
 #flex

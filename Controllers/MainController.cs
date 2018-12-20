@@ -36,7 +36,7 @@ namespace DojoInfoCenter.Controllers
         List<MessageObject> LatestMessages = dbContext.Messages
         .Include(m => m.Creator)
         .Include(m => m.Location)
-        .OrderBy(m => m.CreatedAt)
+        .OrderByDescending(m => m.CreatedAt)
         .Take(3)
         .ToList();
         ViewBag.LatestMessages = LatestMessages;
@@ -64,7 +64,7 @@ namespace DojoInfoCenter.Controllers
         List<MessageObject> MsgsPerLocation = dbContext.Messages
         .Where(m => m.LocationId == ThisLocation.LocationId)
         .Include(m => m.Creator)
-        .OrderBy(m => m.CreatedAt)
+        .OrderByDescending(m => m.CreatedAt)
         .ToList();  
         ViewBag.MsgsPerLocation = MsgsPerLocation;
 
@@ -84,17 +84,15 @@ namespace DojoInfoCenter.Controllers
             {
                 dbContext.Add(newMessage);
                 dbContext.SaveChanges();
-            
-                return RedirectToAction("Main");
+
+                MessageObject msgWlocation = dbContext.Messages
+                .Where(m => m.MessageId == newMessage.MessageId)
+                .Include(m => m.Location)
+                .FirstOrDefault();
+
+                return RedirectToAction("PerLocation", new { name = msgWlocation.Location.LocationName });
             }
         }
-        System.Console.WriteLine("*************************");
-        System.Console.WriteLine("New Message failed");
-        System.Console.WriteLine($"Message: {newMessage.MessageTxt}");
-        System.Console.WriteLine($"IS Archived: {newMessage.IsArchived}");
-        System.Console.WriteLine($"UserID: {newMessage.UserId}");
-        System.Console.WriteLine($"Location ID: {newMessage.LocationId}");
-        System.Console.WriteLine("*************************");
         return RedirectToAction("Main");
     }
 
