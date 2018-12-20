@@ -1,0 +1,39 @@
+@using DojoInfoCenter.Models
+<div id="app">
+
+<form v-on:submit.prevent="">
+    <input type="text" v-model="newMessage" />
+    <input type="submit" value="Send" />
+</form>
+<ul>
+    <li v-for="message in messages">{message}</li>
+</ul>
+</div>
+
+<script>
+    (async function(){
+    var connection = new signalR.HubConnetionBuiler()
+                        .withUrl("/app")
+                        .build();
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            messages: [],
+            newMessage: null
+        },
+        methods: {
+            async addMessage(){
+                connection.invoke("Send", {Message = this.newMessage});
+                this.newMessage = null;
+            }
+        }
+    });
+    connection.on("Send", message => {
+        app.messages.push(message);
+    });
+
+    await connection.start();
+
+    })();
+</script>

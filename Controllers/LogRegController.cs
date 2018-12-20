@@ -25,7 +25,7 @@ namespace DojoInfoCenter.Controllers
     public IActionResult Index()
     {
         System.Console.WriteLine("****************Main Page");
-        return View();
+        return View("Test");
     }
     [HttpGet]
     [Route("register")]

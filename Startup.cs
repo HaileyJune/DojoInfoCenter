@@ -25,6 +25,7 @@ namespace DojoInfoCenter
             services.AddMvc();
             services.AddSession();
             services.AddDbContext<DojoInfoCenterContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +38,12 @@ namespace DojoInfoCenter
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvc();
+
+            app.UseFileServer();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ApplicationHub>("/app");
+            });
         }
     }
 }
