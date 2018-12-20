@@ -27,11 +27,11 @@ a
     outline: 2px solid black;
     background-color: hotpink;
 }
-.container
-{
+/* .container */
+/* { */
     /* background-image: url(wwwroot\images\Background.PNG) */
     /* background-color: gray; */
-}
+/* } */
 
 .troom
 {
@@ -58,11 +58,13 @@ a
 {
     vertical-align: middle;
     height: 50%;
+    width: 75%;
 }
 .sroom img
 {
     vertical-align: middle;
     height: 75%;
+    width: 50%;
 }
 
 .popup-overlay{
@@ -100,12 +102,12 @@ a
 
 #BR
 {
-    background-color: black;
+    background-color: #692c66;
 }
 
 #alumni
 {
-    background-color: blue;
+    background-color: #e44f26;
 }
 
 #python
@@ -115,52 +117,52 @@ a
 
 #dnwb
 {
-    background-color: hotpink;
+    background-color: pink;
 }
 
 #dnmb
 {
-    background-color: aqua;
+    background-color: lightblue;
 }
 
 #info
 {
-    background-color: green;
+    background-color: white;
 }
 
 #pp
 {
-    background-color: blueviolet;
+    background-color: #692c66;
 }
 
 #kitchen
 {
-    background-color: darkblue;
+    background-color: #e44f26;
 }
 
 #pres
 {
-    background-color: yellow;
+    background-color: #86bb4b;
 }
 
 #couch
 {
-    background-color: darkgray;
+    background-color: #3573a2;
 }
 
 #tl
 {
-    background-color: black;
+    background-color: #3573a2;
 }
 
 #dswb
 {
-    background-color: hotpink;    
+    background-color: pink;    
 }
 
 #dsmb
 {
-    background-color: aqua;    
+    background-color: lightblue;    
 }
 
 #wf
@@ -175,5 +177,5 @@ a
 
 #flex
 {
-    background-color: green;    
+    background-color: #86bb4b;    
 }

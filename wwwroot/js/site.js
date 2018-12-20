@@ -27,8 +27,8 @@ $(".Room").on("click", function(){
 
 $( ".Room" ).hover(
     function() {
-    $( this ).append( $( "<span> ***</span>" ) );
+    $( this ).addClass("hover");
     }, function() {
-    $( this ).find( "span:last" ).remove();
+    $( this ).removeClass("hover");
     }
 );
