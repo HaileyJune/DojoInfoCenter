@@ -1,6 +1,7 @@
 /* for general styling */
 body{
     background-image: radial-gradient(white, white, #14a6da);
+    background-repeat: no-repeat;
 }
 
 button
