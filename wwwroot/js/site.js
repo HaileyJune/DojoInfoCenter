@@ -42,7 +42,6 @@ function ShowPerLocation(locationName) {
             ShowPerLocation(res) 
         })
     })
-})
 
 $( ".Room" ).hover(
     function() {
