@@ -44,16 +44,16 @@ p, form{
 
 /* for the pop-up messages */
 .popup-overlay{
-    vertical-align: center;
     visibility:hidden;
     position: fixed;
     background:#ffffff;
     border:3px solid #666666;
     overflow: auto;
     padding: 1%;
-    max-height: 350px;
-    width: 300px;
-    margin-left: 2%;
+    max-height: 300px;
+    min-width: 25%;
+    max-width: 60%;
+    left: 35%;
 }
 
 .popup-content {
