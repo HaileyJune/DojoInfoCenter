@@ -81,6 +81,8 @@ textarea{
     width: auto;
     overflow: auto;
     padding: 1%;
+    max-height: 500px;
+    min-width: 300px;
 }
 
 .popup-content {

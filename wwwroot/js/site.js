@@ -41,17 +41,12 @@ function ShowPerLocation(locationName) {
         .done(function(res){
             ShowPerLocation(res) 
         })
-    })
+    });
 
 $( ".Room" ).hover(
     function() {
-    $(".text").addClass("active");
+    $( this ).addClass("hover");
     }, function() {
-    $(".text").removeClass("active");
+    $( this ).removeClass("hover");
     }
 );
-
-
-
-
-
