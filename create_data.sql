@@ -1,11 +1,11 @@
 use DojoInfoCenter;
 
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE dojoinfocenter.locations;
+TRUNCATE TABLE locations;
 SET FOREIGN_KEY_CHECKS = 1;
 
 SET @dttm = NOW();
-INSERT INTO dojoinfocenter.locations (LocationName, CreatedAt, UpdatedAt) 
+INSERT INTO DojoInfoCenter.locations (LocationName, CreatedAt, UpdatedAt) 
 		VALUES 
 			('Mean', @dttm, @dttm), 
 			('BreakoutRoom', @dttm, @dttm), 
@@ -25,4 +25,4 @@ INSERT INTO dojoinfocenter.locations (LocationName, CreatedAt, UpdatedAt)
 			('CSharp', @dttm, @dttm), 
 			('FlexSpace', @dttm, @dttm);
 
-SELECT * FROM dojoinfocenter.locations;
+SELECT * FROM DojoInfoCenter.locations;
