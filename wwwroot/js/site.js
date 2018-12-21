@@ -42,7 +42,6 @@ function ShowPerLocation(locationName) {
             ShowPerLocation(res) 
         })
     })
-<<<<<<< HEAD
 })
 
 $( ".Room" ).hover(
@@ -52,10 +51,8 @@ $( ".Room" ).hover(
     $( this ).removeClass("hover");
     }
 );
-=======
 
 
 
 
 
->>>>>>> ajax_updates
