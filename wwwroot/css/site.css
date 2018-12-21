@@ -32,6 +32,11 @@ a
     /* background-color: gray; */
 /* } */
 
+textarea{
+    min-width: 40%;
+    min-height: 20%;
+}
+
 .troom
 {
     display: block;
