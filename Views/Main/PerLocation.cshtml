@@ -1,6 +1,6 @@
 <div>
     @using DojoInfoCenter.Models
-    <p>@ViewBag.ThisLocation.LocationName</p>
+    <strong>@ViewBag.ThisLocation.LocationName</strong>
     <ul>
     @{
         if (@ViewBag.MsgsPerLocation.Count != 0)
@@ -8,9 +8,13 @@
             foreach(var m in @ViewBag.MsgsPerLocation)
             {
                 <li>@m.CreatedAt.ToString("MM/dd h:mm tt")
-                    @m.Creator.UserName : 
+                    by @m.Creator.UserName : 
                     <br>
                     @m.MessageTxt 
+
+                    @if (@ViewBag.LoggedInUserId == @m.UserId){
+                        <a href="/delete/@m.MessageId">Delete</a>
+                    }
                 </li>
             }
         }

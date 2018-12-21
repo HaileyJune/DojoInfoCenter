@@ -28,6 +28,7 @@ namespace DojoInfoCenter.Controllers
         {
             return RedirectToAction("Index", "LogReg");
         }
+        ViewBag.LoggedInUserId = HttpContext.Session.GetInt32("userid");
 
         List<LocationObject> AllLocations = dbContext.Locations
         .ToList();
@@ -42,6 +43,23 @@ namespace DojoInfoCenter.Controllers
         ViewBag.LatestMessages = LatestMessages;
 
         return View();
+    }
+
+//load latest messages partial
+    [HttpGet]
+    [Route("/latest")]
+    public IActionResult Latest()
+    {
+        ViewBag.LoggedInUserId = HttpContext.Session.GetInt32("userid");
+        List<MessageObject> LatestMessages = dbContext.Messages
+        .Include(m => m.Creator)
+        .Include(m => m.Location)
+        .OrderByDescending(m => m.CreatedAt)
+        .Take(3)
+        .ToList();
+        ViewBag.LatestMessages = LatestMessages;
+
+        return PartialView("Latest");
     }
 
 //----get messages for specific location and render PerLocation partial-----
@@ -98,6 +116,33 @@ namespace DojoInfoCenter.Controllers
         }
         return RedirectToAction("Main");
     }
+
+// ----------------delete a message--------------
+        [HttpGet("/delete/{id}")]
+        public IActionResult delete(int id)
+        {
+            System.Console.WriteLine("*******************");
+            System.Console.WriteLine("delete route worked");
+            if(HttpContext.Session.GetInt32("userid") == null) 
+            {
+                return RedirectToAction("Index", "LogReg");
+            }
+            
+
+            MessageObject deletingMsg = dbContext.Messages
+            .Where(m => m.MessageId == id)
+            .FirstOrDefault();
+
+            if(HttpContext.Session.GetInt32("userid") != deletingMsg.UserId) 
+            {
+                return RedirectToAction("Main");
+            }
+
+            dbContext.Messages.Remove(deletingMsg);
+            dbContext.SaveChanges();
+
+            return RedirectToAction("Main");
+        }
 
 // // ----------form to add new location----------
 //     [HttpGet]
