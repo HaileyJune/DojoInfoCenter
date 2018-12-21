@@ -9,8 +9,8 @@ button
     background-color: white;
 }
 
-a
-{
+.logout{
+    margin-left: 10%;
     text-decoration: none;
 }
 
@@ -53,7 +53,8 @@ p, form{
     max-height: 300px;
     min-width: 25%;
     max-width: 60%;
-    left: 35%;
+    left: 30%;
+    top: 30%;
 }
 
 .popup-content {
