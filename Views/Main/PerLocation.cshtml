@@ -18,13 +18,13 @@
     </ul>
     @model MessageObject
     <p>Post a Message!</p>
-    <form asp-action="newMessage" asp-controller="Main" method="post">
+    <form asp-action="newMessage" asp-controller="Main" method="post" class="newMessageForm">
         <input type="hidden" asp-for="IsArchived" value="False">
         <input type="hidden" asp-for="UserId" value="@ViewBag.LoggedInUserId">
         <input type="hidden" asp-for="LocationId" value="@ViewBag.ThisLocation.LocationId">
-        <textarea asp-for="MessageTxt" rows="1" cols="30"></textarea>
+        <textarea asp-for="MessageTxt"></textarea>
         <br>
-        <button type="submit">Post a message</button>
+        <button type="submit" class="postNewMessage">Post a message</button>
     </form>
 
     <button class="close">Close</button>
